@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class Person {
+        constructor(name) {
+          this.name = name;
+        }
+
+        sayName = () => {
+          console.log(this.name);
+        };
+      }
+
+      class Man extends Person {}
+
+      function Cat(name) {
+        this.name = name;
+      }
+
+      const person1 = new Person('Huang');
+      const person2 = new Person('Ping');
+      const man1 = new Man(18);
+      const cat1 = new Cat('mue');
+      console.log(Person.prototype, Cat.prototype);
+      console.log(person1, person2, man1, cat1);
+      person1.sayName;
+    </script>
+  </body>
+</html>
