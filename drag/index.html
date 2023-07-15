@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .container {
+      background: pink;
+      width: 300px;
+      height: 50px;
+      margin-top: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .box {
+      background: white;
+      height: 25px;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <div class="box" draggable="true">draggable box</div>
+    </div>
+    <div class="container" id="target"></div>
+
+    <script>
+      const box = document.querySelector('.box');
+
+      const target = document.querySelector('#target');
+
+      let dargged = null;
+
+      box.addEventListener('drag', (event) => {
+        // console.log('draging');
+      });
+
+      box.addEventListener('dragstart', (event) => {
+        dargged = event.target;
+        console.log('dragstart', event);
+      });
+
+      box.addEventListener('dragend', (event) => {
+        console.log('dragend');
+      });
+
+      target.addEventListener('dragover', (event) => {
+        event.preventDefault();
+        console.log('dragover', event);
+      });
+
+      target.addEventListener('drop', (event) => {
+        console.log('drop', event);
+        if (event.target.className === 'container') {
+          box.parentNode.removeChild(box);
+          event.target.appendChild(box);
+        }
+      });
+
+      target.addEventListener('dragleave', (event) => {
+        console.log('dragleave');
+      });
+
+      target.addEventListener('dragenter', (event) => {
+        console.log('dragenter');
+      });
+    </script>
+  </body>
+</html>
